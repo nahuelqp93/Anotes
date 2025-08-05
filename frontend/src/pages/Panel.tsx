@@ -54,9 +54,10 @@ const Panel: React.FC = () => {
     }
   };
 
-  const handleVerAnotes = (obraId: number) => {
-    navigate(`/obras/${obraId}/anotes`);
-  };
+  // Función para navegar a anotes (ya no se usa directamente)
+  // const handleVerAnotes = (obraId: number) => {
+  //   navigate(`/obras/${obraId}/anotes`);
+  // };
 
   return (
     <div className={styles.container}>
