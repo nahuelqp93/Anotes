@@ -8,8 +8,12 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log('Intentando conectar a:', `${backendUrl}/home`);
     fetch(`${backendUrl}/home`)
-      .then(res => res.text())
+      .then(res => {
+        console.log('Respuesta del backend:', res.status, res.statusText);
+        return res.text();
+      })
       .then(data => {
         console.log('Mensaje del backend:', data);
       })

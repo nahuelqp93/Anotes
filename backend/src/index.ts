@@ -8,11 +8,17 @@ const app= express();
 const PORT= process.env.PORT || 3000;
 
 app.use(cors({
-  origin: ['https://anotes-frontend.onrender.com', 'http://localhost:5173', 'http://localhost:3000'],
+  origin: ['https://anotes-fronted.onrender.com', 'https://anotes-frontend.onrender.com', 'http://localhost:5173', 'http://localhost:3000'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Middleware para logging de peticiones
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin}`);
+  next();
+});
 app.use(express.json());
 
 // Rutas

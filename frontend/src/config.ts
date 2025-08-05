@@ -4,12 +4,19 @@ const config = {
     backendUrl: 'http://localhost:3000'
   },
   production: {
-    backendUrl: import.meta.env.VITE_BACKEND_URL || 'https://tu-backend-url.onrender.com'
+    backendUrl: import.meta.env.VITE_BACKEND_URL || 'https://anotes-backend.onrender.com'
   }
 };
 
 const environment = import.meta.env.MODE || 'development';
-export const backendUrl = config[environment as keyof typeof config].backendUrl;
+let backendUrl = config[environment as keyof typeof config].backendUrl;
+
+// Asegurar que la URL no termine con slash
+if (backendUrl.endsWith('/')) {
+  backendUrl = backendUrl.slice(0, -1);
+}
+
+export { backendUrl };
 
 // Debug: mostrar la URL que se está usando
 console.log('Environment:', environment);
