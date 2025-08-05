@@ -9,4 +9,9 @@ const config = {
 };
 
 const environment = import.meta.env.MODE || 'development';
-export const backendUrl = config[environment as keyof typeof config].backendUrl; 
+export const backendUrl = config[environment as keyof typeof config].backendUrl;
+
+// Debug: mostrar la URL que se está usando
+console.log('Environment:', environment);
+console.log('Backend URL:', backendUrl);
+console.log('VITE_BACKEND_URL:', import.meta.env.VITE_BACKEND_URL); 
