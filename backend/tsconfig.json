@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ES6",
+    "jsx": "react-jsx",
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./dist",
