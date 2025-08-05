@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import CustomButton from '../components/CustomButton';
 import { styles } from "../styles/PanelStyles";
+import { backendUrl } from '../config';
 
 interface Anote {
   id_Anotes: number;
@@ -46,8 +47,8 @@ const Anotes: React.FC = () => {
 
         // Obtener información de la obra y anotes en paralelo
         const [obraResponse, anotesResponse] = await Promise.all([
-          fetch(`http://localhost:3000/api/obras/${idNum}`),
-          fetch(`http://localhost:3000/api/obras/${idNum}/anotes`)
+          fetch(`${backendUrl}/api/obras/${idNum}`),
+          fetch(`${backendUrl}/api/obras/${idNum}/anotes`)
         ]);
 
         if (!obraResponse.ok) throw new Error('Obra no encontrada');
@@ -89,7 +90,7 @@ const Anotes: React.FC = () => {
         throw new Error('ID de obra inválido');
       }
 
-      const response = await fetch(`http://localhost:3000/api/obras/${idNum}/anotes`, {
+      const response = await fetch(`${backendUrl}/api/obras/${idNum}/anotes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

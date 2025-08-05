@@ -4,9 +4,8 @@ import supabase from './supabaseClient';
 import obrasRoutes from './routes/obrasRoutes';
 import anotesRoutes from './routes/anotesRoutes';
 
-
 const app= express();
-const PORT= 3000;
+const PORT= process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +21,5 @@ app.use('/api', obrasRoutes);
 app.use('/api', anotesRoutes);
 
 app.listen(PORT, ()=>{
-
-    console.log('Servidor iniciado en el puerto 3000');
+    console.log(`Servidor iniciado en el puerto ${PORT}`);
 })

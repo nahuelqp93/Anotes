@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../components/CustomButton';
 import { styles } from "../styles/HomeStyles";
+import { backendUrl } from '../config';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:3000/home')
+    fetch(`${backendUrl}/home`)
       .then(res => res.text())
       .then(data => {
         console.log('Mensaje del backend:', data);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from '../components/CustomButton';
 import { styles } from "../styles/PanelStyles";
+import { backendUrl } from '../config';
 
 interface Obra {
   id_Obra: number;
@@ -22,7 +23,7 @@ const Panel: React.FC = () => {
 
   const fetchObras = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/obras');
+      const response = await fetch(`${backendUrl}/api/obras`);
       const data = await response.json();
       setObras(data);
     } catch (error) {
@@ -32,7 +33,7 @@ const Panel: React.FC = () => {
 
   const handleAgregarObra = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/obras', {
+      const response = await fetch(`${backendUrl}/api/obras`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
