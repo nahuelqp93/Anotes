@@ -1,7 +1,7 @@
 // Configuración para diferentes entornos
 const config = {
   development: {
-    backendUrl: 'http://localhost:1000'
+    backendUrl: 'http://localhost:3000'
   },
   production: {
     backendUrl: import.meta.env.VITE_BACKEND_URL || 'https://tu-backend-url.onrender.com'
