@@ -112,7 +112,7 @@ const Resumen: React.FC = () => {
           {/* Total de la obra */}
           <div className="bg-white p-4 rounded-lg shadow-md">
             <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">TOTAL</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">PRESUPUESTO TOTAL</h3>
               <p className="text-2xl font-bold text-blue-600">
                 Bs {totalObra.toLocaleString('es-ES')}
               </p>
