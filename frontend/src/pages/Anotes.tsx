@@ -242,7 +242,17 @@ const Anotes: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>ANOTES: {obra?.nombre || 'Sin nombre'}</h1>
+      <div className="flex justify-between items-start gap-3 mb-4">
+        <h1 className={`${styles.title} flex-1 break-words leading-tight`}>
+          ANOTES: {obra?.nombre || 'Sin nombre'}
+        </h1>
+        <CustomButton 
+          text="📊" 
+          onClick={() => navigate(`/obras/${obraId}/resumen`)}
+          className="bg-green-500 hover:bg-green-600 px-3 py-2 text-sm min-w-[40px] h-10 flex-shrink-0 w-auto max-w-none mx-0 block"
+          disabled={isLoading}
+        />
+      </div>
       
       <div className={styles.obrasContainer}>
         {anotes.length === 0 ? (
