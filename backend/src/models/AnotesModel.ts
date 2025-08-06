@@ -6,7 +6,7 @@ export const AnotesModel = {
       .from('anotes')
       .select('*')
       .eq('id_Obra', obraId)
-      .order('fecha', { ascending: false });
+      .order('fecha', { ascending: true });
     
     if (error) throw error;
     return data;
@@ -28,5 +28,30 @@ export const AnotesModel = {
       throw error;
     }
     return data?.[0];
+  },
+
+  async updateAnote(anoteId: number, anoteData: { razon: string; gasto: number }) {
+    const { data, error } = await supabase
+      .from('anotes')
+      .update({
+        razon: anoteData.razon,
+        gasto: anoteData.gasto
+      })
+      .eq('id_Anotes', anoteId)
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return data;
+  },
+
+  async deleteAnote(anoteId: number) {
+    const { error } = await supabase
+      .from('anotes')
+      .delete()
+      .eq('id_Anotes', anoteId);
+    
+    if (error) throw error;
+    return true;
   }
 };

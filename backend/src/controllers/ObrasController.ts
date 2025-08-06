@@ -55,6 +55,52 @@ export const ObrasController = {
     } catch (error) {
       res.status(500).json({ error: 'Error al obtener la obra' });
     }
-  }
+  },
 
+  /**
+   * Actualizar una obra
+   */
+  async update(req: Request, res: Response) {
+    try {
+      const id = parseInt(req.params.id);
+      const { nombre, costo } = req.body;
+      
+      if (isNaN(id)) {
+        return res.status(400).json({ error: 'ID inválido' });
+      }
+
+      if (!nombre || costo === undefined) {
+        return res.status(400).json({ error: 'Nombre y costo son requeridos' });
+      }
+
+      const obraActualizada = await ObrasModel.updateObra(id, {
+        nombre,
+        costo: Number(costo)
+      });
+      
+      res.json(obraActualizada);
+    } catch (error) {
+      console.error('Error al actualizar obra:', error);
+      res.status(500).json({ error: 'Error al actualizar la obra' });
+    }
+  },
+
+  /**
+   * Eliminar una obra
+   */
+  async delete(req: Request, res: Response) {
+    try {
+      const id = parseInt(req.params.id);
+      
+      if (isNaN(id)) {
+        return res.status(400).json({ error: 'ID inválido' });
+      }
+
+      await ObrasModel.deleteObra(id);
+      res.status(204).send();
+    } catch (error) {
+      console.error('Error al eliminar obra:', error);
+      res.status(500).json({ error: 'Error al eliminar la obra' });
+    }
+  }
 };
