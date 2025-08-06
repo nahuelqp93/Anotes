@@ -287,25 +287,25 @@ const Anotes: React.FC = () => {
                 </div>
               ) : (
                 // Modo visualización
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h2 className={`${styles.obraNombre} truncate`}>{anote.razon}</h2>
+                <div className="flex justify-between items-start gap-3">
+                  <div className="flex-1 min-w-0">
+                    <h2 className={`${styles.obraNombre} break-words leading-tight`}>{anote.razon}</h2>
                     <p className={`${styles.obraCosto} text-red-600`}>
                       -Bs {anote.gasto.toLocaleString('es-ES')}
                     </p>
                     <span className="text-sm text-gray-500">{formatFecha(anote.fecha)}</span>
                   </div>
-                  <div className="flex space-x-2 ml-2">
+                  <div className="flex space-x-2 flex-shrink-0">
                     <CustomButton 
                       text="✏️" 
                       onClick={() => iniciarEdicion(anote)}
-                      className="bg-blue-500 hover:bg-blue-600 px-3 py-1 text-sm"
+                      className="bg-blue-500 hover:bg-blue-600 px-3 py-2 text-sm min-w-[40px] h-10"
                       disabled={isLoading}
                     />
                     <CustomButton 
                       text="🗑️" 
                       onClick={() => handleEliminarAnote(anote.id_Anotes)}
-                      className="bg-red-500 hover:bg-red-600 px-3 py-1 text-sm"
+                      className="bg-red-500 hover:bg-red-600 px-3 py-2 text-sm min-w-[40px] h-10"
                       disabled={isLoading}
                     />
                   </div>

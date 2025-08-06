@@ -181,25 +181,25 @@ const Panel: React.FC = () => {
               </div>
             ) : (
               // Modo visualización
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-start gap-3">
                 <button
                   onClick={() => navigate(`/obras/${obra.id_Obra}/anotes`)}
-                  className="flex-1 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors p-2 rounded"
+                  className="flex-1 text-left hover:bg-gray-50 active:bg-gray-100 transition-colors p-2 rounded min-w-0"
                 >
-                  <h2 className={styles.obraNombre}>{obra.nombre}</h2>
+                  <h2 className={`${styles.obraNombre} break-words leading-tight`}>{obra.nombre}</h2>
                   <p className={styles.obraCosto}>Bs {obra.costo.toLocaleString('es-ES')}</p>
                 </button>
-                <div className="flex space-x-2 ml-2">
+                <div className="flex space-x-2 flex-shrink-0">
                   <CustomButton 
                     text="✏️" 
                     onClick={() => iniciarEdicion(obra)}
-                    className="bg-blue-500 hover:bg-blue-600 px-3 py-1 text-sm"
+                    className="bg-blue-500 hover:bg-blue-600 px-3 py-2 text-sm min-w-[40px] h-10"
                     disabled={isLoading}
                   />
                   <CustomButton 
                     text="🗑️" 
                     onClick={() => handleEliminarObra(obra.id_Obra)}
-                    className="bg-red-500 hover:bg-red-600 px-3 py-1 text-sm"
+                    className="bg-red-500 hover:bg-red-600 px-3 py-2 text-sm min-w-[40px] h-10"
                     disabled={isLoading}
                   />
                 </div>
