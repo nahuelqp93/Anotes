@@ -94,7 +94,8 @@ const Anotes: React.FC = () => {
       .sort((a, b) => {
         const fechaA = new Date(a.anotes[0]?.fecha || 0);
         const fechaB = new Date(b.anotes[0]?.fecha || 0);
-        return fechaB.getTime() - fechaA.getTime();
+        // Orden ascendente: de la semana más antigua a la más reciente
+        return fechaA.getTime() - fechaB.getTime();
       });
   };
 
